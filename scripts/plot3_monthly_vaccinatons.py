@@ -44,7 +44,7 @@ fig.add_trace(go.Scatter(
 fig.update_layout(
     title={
         'text': "Monthly vaccination progress per 100 people (2020-2022)",
-        'y': 0.95,
+        'y': 0.95,  # Tytuł wraca na górę, bo ma już pełną swobodę
         'x': 0.5,
         'xanchor': 'center',
         'yanchor': 'top',
@@ -68,17 +68,17 @@ fig.update_layout(
         gridcolor='rgba(200, 200, 200, 0.3)'
     ),
     legend=dict(
-        font=dict(size=12),
         orientation="h",
-        yanchor="bottom",
-        y=1.12, 
-        xanchor="right",
-        x=1
+        yanchor="top", 
+        y=-0.25,
+        xanchor="center",
+        x=0.5,
+        font=dict(size=12)
     ),
     template="plotly_white",
     hovermode="x unified", 
     height=500, 
-    margin=dict(t=100, b=50, l=50, r=20)
+    margin=dict(t=60, b=80, l=50, r=20) 
 )
 
 output_html = "../plots/plot3_monthly_vaccinations.html"

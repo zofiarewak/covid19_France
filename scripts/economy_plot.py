@@ -4,7 +4,6 @@ from plotly.subplots import make_subplots
 
 df = pd.read_csv('../data/owid-covid-data.csv')
 
-# filtering data for France, years 2020-2024
 df['date'] = pd.to_datetime(df['date'])
 df_france = df[(df['location'] == 'France') & (df['date'] <= '2024-12-31')].copy()
 
@@ -14,10 +13,11 @@ fig.add_trace(
     go.Scatter(
         x=df_france['date'], 
         y=df_france['new_cases_smoothed_per_million'],
-        name="New covid19 cases",
+        name="New COVID-19 Cases",
         line=dict(color='royalblue', width=2),
         fill='tozeroy', 
-        opacity=0.4
+        opacity=0.4,
+        hovertemplate='Cases: %{y:.1f} per M<extra></extra>'
     ),
     secondary_y=False,
 )
@@ -26,24 +26,44 @@ fig.add_trace(
     go.Scatter(
         x=df_france['date'], 
         y=df_france['stringency_index'],
-        name="Stringency Index",
+        name="Stringency Index (Lockdown Strictness)",
         line=dict(color='firebrick', width=3, shape='hv'),
+        hovertemplate='Stringency: %{y:.1f}/100<extra></extra>'
     ),
     secondary_y=True,
 )
 
 fig.update_layout(
-    title='France: Covid-19 cases vs. stringency index',
-    xaxis_title='Data',
+    title={
+        'text': 'Government restrictions vs. infection waves (France)',
+        'y': 0.95,
+        'x': 0.5,
+        'xanchor': 'center',
+        'yanchor': 'top',
+        'font': dict(size=20, family="Arial", color="black")
+    },
+    xaxis_title='Date',
     hovermode="x unified", 
-    legend=dict(x=0.01, y=0.99)
+    template="plotly_white",
+
+    legend=dict(
+        orientation="h",
+        yanchor="top", 
+        y=-0.25,
+        xanchor="center",
+        x=0.5,
+        font=dict(size=11)
+    ),
+    height=500,
+     margin=dict(t=60, b=100, l=60, r=60) 
 )
 
-fig.update_yaxes(title_text="<b>Covid-19 cases</b> (7 days mean / million)", secondary_y=False)
-fig.update_yaxes(title_text="<b>Stringency Index</b> (scale 0 - 100)", secondary_y=True)
+fig.update_yaxes(title_text="<b>COVID-19 cases</b> (7-day mean / million)", secondary_y=False, title_font=dict(size=12))
+fig.update_yaxes(title_text="<b>Stringency index</b> (scale 0 - 100)", secondary_y=True, title_font=dict(size=12))
+fig.update_xaxes(tickfont=dict(size=11))
 
-fig.write_html("../html/04_stringency_vs_cases.html")
+output_html = "../plots/04_stringency_vs_cases.html"
+fig.write_html(output_html, include_plotlyjs='cdn')
 
-fig.write_image("../data/04_stringency_vs_cases.png", scale=3) 
 
-print("Plot 4 generated")
+
