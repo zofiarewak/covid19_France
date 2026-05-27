@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>COVID-19 Comprehensive Analysis: France vs Europe</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body { 
+            background-color: #f4f6f9; 
+            font-family: 'Segoe UI', Arial, sans-serif; 
+        }
+        .dashboard-title {
+            margin-top: 40px;
+            margin-bottom: 40px;
+        }
+        .chart-card { 
+            background: white; 
+            padding: 15px; 
+            border-radius: 12px; 
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08); 
+            margin-bottom: 30px; 
+            transition: transform 0.2s;
+        }
+        .chart-card:hover {
+            transform: translateY(-3px);
+        }
+        .chart-card h4 {
+            font-size: 1.1rem;
+            color: #333;
+            margin-bottom: 5px;
+            font-weight: 600;
+        }
+        .chart-card .text-muted {
+            font-size: 0.85rem;
+            margin-bottom: 15px;
+        }
+        /* Klucz do braku scrollbarów: wysokość iframe musi być większa niż wysokość wykresu w Pythonie */
+        iframe { 
+            width: 100%; 
+            height: 540px; 
+            border: none; 
+            overflow: hidden; /* Blokuje pojawianie się pasków przewijania */
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container-fluid px-5">
+        <div class="text-center dashboard-title">
+            <h1 class="fw-bold text-dark">COVID-19 Pandemic Dashboard</h1>
+            <p class="text-muted fs-5">Interactive epidemiological and vaccination analysis of France and the European Union</p>
+            <hr class="w-25 mx-auto">
+        </div>
+
+        <div class="row row-cols-1 row-cols-lg-2 g-4">
+            
+            <div class="col">
+                <div class="chart-card">
+                    <h4>1. Infection waves & mortality dynamics</h4>
+                    <p class="text-muted">A synchronized timeline comparing daily new cases and deaths per million inhabitants to visualize pandemic waves.</p>
+                    <iframe src="plots/plot1_infections_and_deaths.html" scrolling="no"></iframe>
+                </div>
+            </div>
+
+            <div class="col">
+                <div class="chart-card">
+                    <h4>2. Global Vaccination Overview (Year-end)</h4>
+                    <p class="text-muted">Macro-level comparison of cumulative total vaccinations status per 100 people across consecutive years.</p>
+                    <iframe src="plots/plot2_vaccinations.html" scrolling="no"></iframe>
+                </div>
+            </div>
+
+            <div class="col">
+                <div class="chart-card">
+                    <h4>3. Detailed Vaccination Progress (2020-2022)</h4>
+                    <p class="text-muted">A close-up monthly look showing the speed, timeline, and stabilization of the vaccine rollout.</p>
+                    <iframe src="plots/plot3_monthly_vaccinations.html" scrolling="no"></iframe>
+                </div>
+            </div>
+
+            <div class="col">
+                <div class="chart-card">
+                    <h4>4. ...</h4>
+                    <p class="text-muted">...</p>
+                    <iframe src="wykres4_vaccinations_monthly.html" scrolling="no"></iframe>
+                </div>
+            </div>
+
+            <div class="col">
+                <div class="chart-card">
+                    <h4>5...</h4>
+                    <p class="text-muted">...</p>
+                    <iframe src="wykres5_economy.html" scrolling="no"></iframe>
+                </div>
+            </div>
+
+            <div class="col">
+                <div class="chart-card">
+                    <h4>6. </h4>
+                    <p class="text-muted">...</p>
+                    <iframe src="wykres6_poland_compare.html" scrolling="no"></iframe>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</body>
+</html>

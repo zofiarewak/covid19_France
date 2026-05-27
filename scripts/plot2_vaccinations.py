@@ -45,28 +45,28 @@ fig.update_layout(
         'x': 0.5,
         'xanchor': 'center',
         'yanchor': 'top',
-        'font': dict(size=22, family="Arial", color="black")
+        'font': dict(size=20, family="Arial", color="black")
     },
     xaxis=dict(
         title=dict(
             text="Year",
-            font=dict(size=16, family="Arial", color="black")
+            font=dict(size=14, family="Arial", color="black")
         ),
-        tickfont=dict(size=14),
+        tickfont=dict(size=12),
         type='category'
     ),
     yaxis=dict(
         title=dict(
             text="Vaccinations per 100 inhabitants",
-            font=dict(size=16, family="Arial", color="black")
+            font=dict(size=14, family="Arial", color="black")
         ),
-        tickfont=dict(size=14),
+        tickfont=dict(size=12),
         gridcolor='rgba(200, 200, 200, 0.3)'
     ),
     barmode='group',
     bargap=0.3,
     legend=dict(
-        font=dict(size=14),
+        font=dict(size=12),
         orientation="h",
         yanchor="bottom",
         y=1.02,
@@ -74,18 +74,18 @@ fig.update_layout(
         x=1
     ),
     template="plotly_white",
-    width=900,
-    height=600
+    height=500,
+    margin=dict(t=90, b=40, l=50, r=20)
 )
 
 fig.update_traces(
     texttemplate='%{y:.1f}', 
     textposition='outside', 
-    textfont=dict(size=12, color='black')
+    textfont=dict(size=11, color='black')
 )
 
 output_html = "../plots/plot2_vaccinations.html"
-fig.write_html(output_html)
+fig.write_html(output_html, include_plotlyjs='cdn')
 
 
 
