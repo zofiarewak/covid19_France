@@ -58,42 +58,46 @@ fig.add_trace(go.Scatter(
 fig.update_layout(
     title={
         'text': 'Trend Predictions & Pandemic Decline (France)',
-        'y': 0.95, 
+        'y': 0.96, 
         'x': 0.5,
         'xanchor': 'center',
         'yanchor': 'top',
-        'font': dict(size=20, family="Arial", color="black")
+        'font': dict(size=30, family="Arial", color="black", weight="bold")
     },
     xaxis_title='Date',
     yaxis_title='New cases per million',
     hovermode="x unified",
     template="plotly_white",
     
+    height=680,
+    margin=dict(t=70, b=140, l=70, r=40),
+    
+    hoverlabel=dict(
+        font_size=15,
+        font_family="Arial"
+    ),
+    
     legend=dict(
         orientation="h", 
         yanchor="top", 
-        y=-0.25,
+        y=-0.18,
         xanchor="center", 
         x=0.5,
-        font=dict(size=11)
+        font=dict(size=16)
     ),
-    height=500,
-    
-    margin=dict(t=60, b=120, l=60, r=20), 
     
     xaxis=dict(
         range=['2020-01-01', '2024-12-31'],
-        tickfont=dict(size=12)
+        tickfont=dict(size=16),
+        title_font=dict(size=22)
     ),
     yaxis=dict(
         range=[0, max(y) + 500],
-        tickfont=dict(size=12),
+        tickfont=dict(size=16),
+        title_font=dict(size=22),
         gridcolor='rgba(200, 200, 200, 0.3)'
     )
 )
 
 output_html = "../plots/05_inference_period.html"
 fig.write_html(output_html, include_plotlyjs='cdn')
-
-
-

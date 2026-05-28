@@ -41,47 +41,57 @@ fig.add_trace(go.Scatter(
     hovertemplate='<b>Europe</b><br>Month: %{x}<br>Vaccinations: %{y:.1f} per 100<extra></extra>'
 ))
 
+
 fig.update_layout(
     title={
         'text': "Monthly vaccination progress per 100 people (2020-2022)",
-        'y': 0.95,  # Tytuł wraca na górę, bo ma już pełną swobodę
+        'y': 0.96,
         'x': 0.5,
         'xanchor': 'center',
         'yanchor': 'top',
-        'font': dict(size=20, family="Arial", color="black")
+        'font': dict(size=30, family="Arial", color="black", weight="bold") 
     },
     xaxis=dict(
         title=dict(
             text="Year-Month",
-            font=dict(size=14, family="Arial", color="black")
+            font=dict(size=22, family="Arial", color="black")
         ),
-        tickfont=dict(size=11),
+        tickfont=dict(size=18),
         tickangle=-45, 
         type='category'
     ),
     yaxis=dict(
         title=dict(
             text="Vaccinations per 100 inhabitants",
-            font=dict(size=14, family="Arial", color="black")
+            font=dict(size=20, family="Arial", color="black")
         ),
-        tickfont=dict(size=12),
+        tickfont=dict(size=18),
         gridcolor='rgba(200, 200, 200, 0.3)'
     ),
+    
+
+    hoverlabel=dict(
+        font_size=15,
+        font_family="Arial"
+    ),
+    
+
     legend=dict(
         orientation="h",
         yanchor="top", 
         y=-0.25,
         xanchor="center",
         x=0.5,
-        font=dict(size=12)
+        font=dict(size=18) 
     ),
     template="plotly_white",
     hovermode="x unified", 
-    height=500, 
-    margin=dict(t=60, b=80, l=50, r=20) 
+    height=680, 
+    margin=dict(t=90, b=140, l=80, r=40)
 )
 
 output_html = "../plots/plot3_monthly_vaccinations.html"
 fig.write_html(output_html, include_plotlyjs='cdn')
+
 
 

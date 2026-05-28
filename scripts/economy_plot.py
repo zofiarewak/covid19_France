@@ -36,34 +36,55 @@ fig.add_trace(
 fig.update_layout(
     title={
         'text': 'Government restrictions vs. infection waves (France)',
-        'y': 0.95,
+        'y': 0.96,
         'x': 0.5,
         'xanchor': 'center',
         'yanchor': 'top',
-        'font': dict(size=20, family="Arial", color="black")
+        'font': dict(size=30, family="Arial", color="black", weight="bold") 
     },
     xaxis_title='Date',
     hovermode="x unified", 
     template="plotly_white",
 
+    height=680,
+    margin=dict(t=70, b=140, l=70, r=70),
+    
+
+    hoverlabel=dict(
+        font_size=15,
+        font_family="Arial"
+    ),
+
     legend=dict(
         orientation="h",
         yanchor="top", 
-        y=-0.25,
+        y=-0.18, 
         xanchor="center",
         x=0.5,
-        font=dict(size=11)
-    ),
-    height=500,
-     margin=dict(t=60, b=100, l=60, r=60) 
+        font=dict(size=16) 
+    )
 )
 
-fig.update_yaxes(title_text="<b>COVID-19 cases</b> (7-day mean / million)", secondary_y=False, title_font=dict(size=12))
-fig.update_yaxes(title_text="<b>Stringency index</b> (scale 0 - 100)", secondary_y=True, title_font=dict(size=12))
-fig.update_xaxes(tickfont=dict(size=11))
+fig.update_xaxes(
+    tickfont=dict(size=16),
+    title_font=dict(size=22),
+    gridcolor='rgba(200, 200, 200, 0.3)'
+)
+
+fig.update_yaxes(
+    title_text="<b>COVID-19 cases</b> (7-day mean / million)", 
+    secondary_y=False, 
+    title_font=dict(size=22),
+    tickfont=dict(size=16),
+    gridcolor='rgba(200, 200, 200, 0.3)'
+)
+
+fig.update_yaxes(
+    title_text="<b>Stringency index</b> (scale 0 - 100)", 
+    secondary_y=True, 
+    title_font=dict(size=22), 
+    tickfont=dict(size=16)
+)
 
 output_html = "../plots/04_stringency_vs_cases.html"
 fig.write_html(output_html, include_plotlyjs='cdn')
-
-
-

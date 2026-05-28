@@ -18,7 +18,7 @@ years = france_yearly['Year'].tolist()
 
 fig = go.Figure()
 
-# bar for France
+
 fig.add_trace(go.Bar(
     x=years,
     y=france_yearly['total_vaccinations_per_hundred'],
@@ -28,7 +28,7 @@ fig.add_trace(go.Bar(
     hovertemplate='<b>France</b><br>Year: %{x}<br>Vaccinations: %{y:.1f} per 100<extra></extra>'
 ))
 
-# bar for Europe (mean)
+
 fig.add_trace(go.Bar(
     x=years,
     y=europe_yearly['total_vaccinations_per_hundred'],
@@ -41,47 +41,56 @@ fig.add_trace(go.Bar(
 fig.update_layout(
     title={
         'text': "Total vaccinations per 100 people (Year-end status)",
-        'y': 0.95,
+        'y': 0.96,
         'x': 0.5,
         'xanchor': 'center',
         'yanchor': 'top',
-        'font': dict(size=20, family="Arial", color="black")
+        'font': dict(size=30, family="Arial", color="black", weight="bold")
     },
     xaxis=dict(
         title=dict(
             text="Year",
-            font=dict(size=14, family="Arial", color="black")
+            font=dict(size=22, family="Arial", color="black")
         ),
-        tickfont=dict(size=12),
+        tickfont=dict(size=20),
         type='category'
     ),
     yaxis=dict(
         title=dict(
             text="Vaccinations per 100 inhabitants",
-            font=dict(size=14, family="Arial", color="black")
+            font=dict(size=22, family="Arial", color="black")
         ),
-        tickfont=dict(size=12),
+        tickfont=dict(size=20),
         gridcolor='rgba(200, 200, 200, 0.3)'
     ),
     barmode='group',
     bargap=0.3,
+    
+
+    hoverlabel=dict(
+        font_size=15,
+        font_family="Arial"
+    ),
+
+
     legend=dict(
-        font=dict(size=12),
+        font=dict(size=16), 
         orientation="h",
-        yanchor="bottom",
-        y=1.02,
-        xanchor="right",
-        x=1
+        yanchor="top",
+        y=-0.22, 
+        xanchor="center",
+        x=0.5
     ),
     template="plotly_white",
-    height=500,
-    margin=dict(t=90, b=40, l=50, r=20)
+    height=680,
+    margin=dict(t=90, b=140, l=80, r=40) 
 )
+
 
 fig.update_traces(
     texttemplate='%{y:.1f}', 
     textposition='outside', 
-    textfont=dict(size=11, color='black')
+    textfont=dict(size=16, color='black', weight='bold')
 )
 
 output_html = "../plots/plot2_vaccinations.html"

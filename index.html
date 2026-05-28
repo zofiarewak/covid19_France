@@ -4,104 +4,146 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>COVID-19 Comprehensive Analysis: France vs Europe</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
+        /* Reset podstawowych stylów */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
         body { 
             background-color: #f4f6f9; 
             font-family: 'Segoe UI', Arial, sans-serif; 
+            color: #333;
+            line-height: 1.5;
+            padding: 20px;
         }
+
+        /* Kontener główny - ogranicza maksymalną szerokość dla komfortu oglądania */
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Nagłówek strony */
         .dashboard-title {
-            margin-top: 40px;
-            margin-bottom: 40px;
+            text-align: center;
+            margin-top: 50px;
+            margin-bottom: 50px;
         }
+
+        .dashboard-title h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #1a1a1a;
+            margin-bottom: 10px;
+        }
+
+        .dashboard-title p {
+            font-size: 1.2rem;
+            color: #6c757d;
+        }
+
+        .divider {
+            width: 100px;
+            height: 3px;
+            background-color: #dee2e6;
+            margin: 20px auto 0;
+            border: none;
+        }
+
+        /* Układ wykresów - jeden pod drugim, co daje im maksymalną przestrzeń */
+        .charts-container {
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+
+        /* Styl karty wykresu */
         .chart-card { 
             background: white; 
-            padding: 15px; 
-            border-radius: 12px; 
-            box-shadow: 0 4px 12px rgba(0,0,0,0.08); 
-            margin-bottom: 30px; 
-            transition: transform 0.2s;
+            padding: 30px; 
+            border-radius: 16px; 
+            box-shadow: 0 6px 18px rgba(0,0,0,0.06); 
+            transition: transform 0.2s, box-shadow 0.2s;
         }
+
         .chart-card:hover {
-            transform: translateY(-3px);
+            transform: translateY(-4px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
         }
+
         .chart-card h4 {
-            font-size: 1.1rem;
-            color: #333;
-            margin-bottom: 5px;
+            font-size: 1.4rem;
+            color: #212529;
+            margin-bottom: 8px;
             font-weight: 600;
         }
+
         .chart-card .text-muted {
-            font-size: 0.85rem;
-            margin-bottom: 15px;
+            font-size: 0.95rem;
+            color: #6c757d;
+            margin-bottom: 25px;
         }
-        /* Klucz do braku scrollbarów: wysokość iframe musi być większa niż wysokość wykresu w Pythonie */
+
+        /* Zwiększona wysokość wykresów (z 540px do 700px) */
         iframe { 
             width: 100%; 
-            height: 540px; 
+            height: 700px; 
             border: none; 
-            overflow: hidden; /* Blokuje pojawianie się pasków przewijania */
+            overflow: hidden; /* Blokuje paski przewijania */
+            border-radius: 8px;
         }
     </style>
 </head>
 <body>
 
-    <div class="container-fluid px-5">
-        <div class="text-center dashboard-title">
-            <h1 class="fw-bold text-dark">COVID-19 Pandemic Dashboard</h1>
-            <p class="text-muted fs-5">Interactive epidemiological and vaccination analysis of France and the European Union</p>
-            <hr class="w-25 mx-auto">
+    <div class="container">
+        <div class="dashboard-title">
+            <h1>COVID-19 Pandemic Dashboard</h1>
+            <p>Interactive epidemiological and vaccination analysis of France and the European Union</p>
+            <hr class="divider">
         </div>
 
-        <div class="row row-cols-1 row-cols-lg-2 g-4">
+        <div class="charts-container">
             
-            <div class="col">
-                <div class="chart-card">
-                    <h4>1. Infection waves & mortality dynamics</h4>
-                    <p class="text-muted">A synchronized timeline comparing daily new cases and deaths per million inhabitants to visualize pandemic waves.</p>
-                    <iframe src="plots/plot1_infections_and_deaths.html" scrolling="no"></iframe>
-                </div>
+            <div class="chart-card">
+                <h4>1. Infection waves & mortality dynamics</h4>
+                <p class="text-muted">A synchronized timeline comparing daily new cases and deaths per million inhabitants to visualize pandemic waves.</p>
+                <iframe src="plots/plot1_infections_and_deaths.html" scrolling="no"></iframe>
             </div>
 
-            <div class="col">
-                <div class="chart-card">
-                    <h4>2. Global vaccination overview (Year-end)</h4>
-                    <p class="text-muted">Macro-level comparison of cumulative total vaccinations status per 100 people across consecutive years.</p>
-                    <iframe src="plots/plot2_vaccinations.html" scrolling="no"></iframe>
-                </div>
+            <div class="chart-card">
+                <h4>2. Global vaccination overview (Year-end)</h4>
+                <p class="text-muted">Macro-level comparison of cumulative total vaccinations status per 100 people across consecutive years.</p>
+                <iframe src="plots/plot2_vaccinations.html" scrolling="no"></iframe>
             </div>
 
-            <div class="col">
-                <div class="chart-card">
-                    <h4>3. Detailed vaccination progress (2020-2022)</h4>
-                    <p class="text-muted">A close-up monthly look showing the speed, timeline, and stabilization of the vaccine rollout.</p>
-                    <iframe src="plots/plot3_monthly_vaccinations.html" scrolling="no"></iframe>
-                </div>
+            <div class="chart-card">
+                <h4>3. Detailed vaccination progress (2020-2022)</h4>
+                <p class="text-muted">A close-up monthly look showing the speed, timeline, and stabilization of the vaccine rollout.</p>
+                <iframe src="plots/plot3_monthly_vaccinations.html" scrolling="no"></iframe>
             </div>
 
-
-            <div class="col">
-                <div class="chart-card">
-                    <h4>4. Policy response vs infection waves</h4>
-                    <p class="text-muted">A dual-axis timeline analyzing how government intervention strictness (stringency index) responded to or mitigated actual infection peaks.</p>
-                    <iframe src="plots/04_stringency_vs_cases.html" scrolling="no"></iframe>
-                </div>
+            <div class="chart-card">
+                <h4>4. Policy response vs infection waves</h4>
+                <p class="text-muted">A dual-axis timeline analyzing how government intervention strictness (stringency index) responded to or mitigated actual infection peaks.</p>
+                <iframe src="plots/04_stringency_vs_cases.html" scrolling="no"></iframe>
             </div>
 
-            <div class="col">
-                <div class="chart-card">
-                    <h4>5. Predictive modeling & trend analysis</h4>
-                    <p class="text-muted">Polynomial regression comparing actual pandemic decline against extrapolated forecasts based on early waves (2020-2022).</p>
-                    <iframe src="plots/05_inference_period.html" scrolling="no"></iframe>
-                </div>
+            <div class="chart-card">
+                <h4>5. Predictive modeling & trend analysis</h4>
+                <p class="text-muted">Polynomial regression comparing actual pandemic decline against extrapolated forecasts based on early waves (2020-2022).</p>
+                <iframe src="plots/05_inference_period.html" scrolling="no"></iframe>
             </div>
 
-            <div class="col">
-                <div class="chart-card">
-                    <h4>6. Animated Pandemic Trajectory </h4>
-                    <p class="text-muted">Dynamic Hans Rosling-style simulation mapping total cases against infection acceleration (bubble size indicates daily mortality rate).</p>
-                    <iframe src="plots/06_animated_bubbles.html" scrolling="no"></iframe>
-                </div>
+            <div class="chart-card">
+                <h4>6. Animated Pandemic Trajectory</h4>
+                <p class="text-muted">Dynamic Hans Rosling-style simulation mapping total cases against infection acceleration (bubble size indicates daily mortality rate).</p>
+                <iframe src="plots/06_animated_bubbles.html" scrolling="no"></iframe>
             </div>
 
         </div>
