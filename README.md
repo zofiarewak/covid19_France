@@ -53,19 +53,25 @@ This plot displays two metrics over time on a dual-axis system: the daily new CO
 This plot displays the actual daily new COVID-19 cases in France alongside two polynomial regression curves. The green line shows a trend model calculated using the entire 2020–2024 dataset, while the dashed red line shows a predictive model calculated using only the data from the first period (2020–2022) and projected forward through 2024.
 
 ### *Plot 6*: Comparative Presentation Timeline – COVID-19 Trajectory & Mortality Analysis
+
 - `plots/06_animated_bubbles.html`
+
 This is an animated scatter plot that tracks the weekly progression of the pandemic across France, Poland, and Europe using a dual logarithmic scale. The horizontal axis (X) shows the total cumulative cases, the vertical axis (Y) shows the daily new cases per million, and the dynamic size of each bubble corresponds to the daily mortality rate.
 
 ### *Plot 7*: Vaccination Rollout vs. Infection Dynamics (Phase-trajectory animation)
+
 - `plots/plot_new_cases_vaccinations.gif`
 - `plots/plot_new_cases_vaccinations.png`
+
 This animated phase-trajectory chart explores the relationship between the percentage of the population vaccinated (at least one dose) and the weekly average of daily new cases per million. By replacing the traditional time axis with vaccination coverage on the horizontal axis (X), the animation maps out a distinct, loop-like historical path for France and Poland. This visualization highlights how subsequent pandemic waves escalated or subsided at specific vaccination thresholds, offering a direct look into the real-world impact of population immunity on virus transmission.
 
 
 
 ### *Plot 8*: Virus Transmission Velocity – Reproduction Rate Analysis (Animated line chart)
+
 - `plots/covid_r_value_fr_pl.gif`
 - `plots/covid_r_value_fr_pl.png`
+  
 This animated timeline tracks the weekly progression of the virus reproduction rate (R-value) for France and Poland. Featuring a static critical threshold line at R=1.0, the chart illustrates the raw velocity of the epidemic; values above the line indicate exponential growth, while values below signify that the outbreak is receding. The dynamic movement of the curves captures the precise moments when the virus gained momentum, as well as the immediate impact of seasonal shifts, public health interventions, or vaccination thresholds in forcing the transmission rate back under control.
 
 
