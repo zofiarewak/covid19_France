@@ -15,6 +15,11 @@ The raw data is too large for git. Download it with: `https://github.com/owid/co
 
 Place the files at the repo root (covid19_France/data/).
 
+- Cleaned data:
+
+- `data/epidemic_data_cleaned.csv`
+Cleaned dataframe from epidemiological data - used to create plot 1,2,3. Script used to generate this data is located in `scripts/epidemic_data_cleaning.py`
+
 ## Plots overview:
 
 ### *Plot 1*: Infections and deaths (Line chart)
